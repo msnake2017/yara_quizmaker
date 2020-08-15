@@ -1,0 +1,29 @@
+{% extends 'quiz_test/base.html' %}
+{% load static %}
+
+{% block body %}
+    {% if user_status %}
+        <table class="table table-condensed table-hover">
+            <thead>
+            <tr>
+                <th>Quiz name</th>
+                <th>Total questions </th>
+                <th>Total correct ones </th>
+                <th>Finish date </th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for status in user_status %}
+            <tr>
+                <td>{{ status.quiz.name }}</td>
+                <td>{{ status.total_questions }}</td>
+                <td>{{ status.correct_answers }}</td>
+                <td>{{ status.finish_date }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <h1>You haven't started any quizzes yet :(</h1>
+    {% endif %}
+{% endblock %}

@@ -138,3 +138,5 @@ dmypy.json
 cython_debug/
 
 .idea
+*/local_settings.py
+__test.py

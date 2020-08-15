@@ -1,0 +1,34 @@
+{% extends 'quiz_test/base.html' %}
+{% load static %}
+
+{% block body %}
+    {% if available_quiz %}
+        <table class="table table-hover">
+            <thead>
+            <tr>
+                <th>Name</th>
+                <th>Description</th>
+                <th>Created date</th>
+                <th>Update date</th>
+            </tr>
+            </thead>
+            <tbody>
+            {% for quiz in available_quiz %}
+            <tr>
+                <td><a href="{% url 'quiz_test:quiz_detail' quiz_id=quiz.id user_id=user.id %}">{{ quiz.name }}</a></td>
+                <td><a href="{{ quiz.image.url }}">{{ quiz.description }}</a></td>
+                <td>{{ quiz.create_date }}</td>
+                <td>{{ quiz.update_date }}</td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+    {% else %}
+        <div class="jumbotron">
+            <div class="container">
+                <h1>Oops!</h1>
+                <p>You ran out of quizzes :(</p>
+            </div>
+        </div>
+    {% endif %}
+{% endblock %}

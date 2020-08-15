@@ -1,0 +1,35 @@
+<!doctype html>
+{% load static %}
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <!-- Latest compiled and minified CSS & JS -->
+    <link rel="stylesheet" media="screen" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <title>quiz test</title>
+</head>
+<body>
+
+
+
+
+    <div class="container">
+        {% if user.is_authenticated %}
+            <h3>{{ user.username }}</h3>
+            <h4><a href="{% url "quiz_test:user_table" user_id=user.id %}">My Results</a></h4>
+            <h4><a href="{% url "quiz_test:quiz_list" user_id=user.id %}">Quiz List</a></h4>
+
+        {% endif %}
+        <h4><a href="{% url "quiz_test:signup_or_login" %}">Home</a></h4>
+        {% block body %}
+        {% endblock body %}
+    </div>
+
+
+<!-- Latest compiled and minified JS -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+</body>
+</html>

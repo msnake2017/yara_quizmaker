@@ -1,0 +1,35 @@
+{% extends 'quiz_test/base.html' %}
+
+{% block body %}
+    {% if questions %}
+        <form method="POST">
+        {% csrf_token %}
+        <p style="text-align: center">
+        <img src="{{ quiz.image.url }}" height="200px" width="400px">
+        </p>
+        <ol>
+        {% for question in questions %}
+            <li>
+                <h3>{{ question.label }}</h3>
+                <ul style="list-style: lower-roman">
+                {% for answer in question.answer_set.all %}
+                    <li>
+                        <div class="radio">
+                            <label>
+                                <input type="radio" name="{{ question.id }}" id="inputID" value="{{ answer.is_correct }}" checked="checked">
+                                {{ answer.text }}
+                            </label>
+                        </div>
+                    </li>
+                {% endfor %}
+                </ul>
+            </li>
+            <hr>
+        {% endfor %}
+        </ol>
+            <p style="text-align: center"><button type="submit" class="btn btn-primary">Submit</button></p>
+        </form>
+    {% else %}
+        <h1>There are no Questions for this quiz</h1>
+    {% endif %}
+{% endblock %}

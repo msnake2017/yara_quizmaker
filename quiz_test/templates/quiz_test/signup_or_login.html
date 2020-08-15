@@ -1,0 +1,51 @@
+{% extends 'quiz_test/base.html' %}
+{% load static %}
+
+{% block body %}
+    <div class="row" style="margin-top: 100px">
+    {% if user.is_authenticated %}
+        <div class="col-xs-12 col-sm-12 col-md-12 col-lg-12">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>LOGOUT</h1>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="{% url 'quiz_test:logout' %}">click</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>LOGIN</h1>
+                    <p>
+                        <a class="btn btn-primary btn-lg" href="{% url 'quiz_test:login' %}">click</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>ADMIN</h1>
+                    <p>
+                        <a class="btn btn-success btn-lg" href="{% url 'admin:index' %}">click</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-4 col-sm-4 col-md-4 col-lg-4">
+            <div class="jumbotron">
+                <div class="container">
+                    <h1>SIGNUP</h1>
+                    <p>
+                        <a class="btn btn-danger btn-lg" href="{% url 'quiz_test:signup' %}">click</a>
+                    </p>
+                </div>
+            </div>
+        </div>
+    {% endif %}
+
+    </div>
+{% endblock %}
